@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM alpine:latest
 
 #RUN echo http://download.nus.edu.sg/mirror/alpine/v3.8/main > /etc/apk/repositories; \
    # echo http://download.nus.edu.sg/mirror/alpine/v3.8/community >> /etc/apk/repositories
