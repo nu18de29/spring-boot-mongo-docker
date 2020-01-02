@@ -5,7 +5,8 @@ FROM openjdk:8-jdk-alpine
     
 # Required for starting application up.
 #RUN apk update && apk add --no-cache
-RUN apk update && apk add /bin/sh
+#RUN apk update && apk add /bin/sh
+RUN apk add --no-cache bash
 
 RUN mkdir -p /opt/app
 ENV PROJECT_HOME /opt/app
