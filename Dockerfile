@@ -1,7 +1,7 @@
 FROM openjdk:8-jdk-alpine
 
-RUN echo http://mirror.yandex.ru/mirrors/alpine/v3.9/main > /etc/apk/repositories; \
-    echo http://mirror.yandex.ru/mirrors/alpine/v3.9/community >> /etc/apk/repositories
+RUN echo http://download.nus.edu.sg/mirror/alpine/v3.9/main > /etc/apk/repositories; \
+    echo http://download.nus.edu.sg/mirror/alpine/v3.9/community >> /etc/apk/repositories
     
 # Required for starting application up.
 RUN apk update && apk add --no-cache
