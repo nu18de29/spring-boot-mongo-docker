@@ -4,7 +4,7 @@ RUN echo http://mirror.yandex.ru/mirrors/alpine/v3.9/main > /etc/apk/repositorie
     echo http://mirror.yandex.ru/mirrors/alpine/v3.9/community >> /etc/apk/repositories
     
 # Required for starting application up.
-RUN apk update && apk add /bin/sh
+RUN apk update && apk add --no-cache
 
 RUN mkdir -p /opt/app
 ENV PROJECT_HOME /opt/app
