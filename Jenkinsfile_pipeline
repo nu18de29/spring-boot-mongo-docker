@@ -1,0 +1,38 @@
+node{
+    def imageTag = "rootex/spring-boot-mongo:${env.BUILD_NUMBER}"
+    def namespace = "omgcicd"
+    
+    stage("Git Clone"){
+        git credentialsId: 'GIT_CREDENTIALS', url: 'https://github.com/nu18de29/spring-boot-mongo-docker.git',branch: 'BranchDev'
+    }
+    
+    stage("Maven Clean Build"){
+        def mavenHome = tool name: "Maven-3.6.3", type: "maven"    
+        def mavenCMD = "${mavenHome}/bin/mvn "
+        sh "${mavenCMD} clean package"
+    }
+    
+    stage("Build Docker Image"){
+        sh "docker build -t ${imageTag} ."
+    }
+    
+    stage("Docker Push"){
+        withCredentials([string(credentialsId: 'DOCKER_HUB_CERDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]) {
+            sh "docker login -u rootex -p ${DOCKER_HUB_CREDENTIALS}"
+            }
+        sh "docker push ${imageTag} "
+    }
+    
+    /**
+    stage("Deploy Application in K8S Cluster"){
+        kubernetesDeploy(
+            configs: 'springBootMongo.yml' ,
+            kubeconfigID:'' ,
+            enableConfigSubstitution: true
+            )
+    }**/
+    
+    stage("Deploy Application in K8S Cluster"){
+        sh "kubectl apply --namespace=$namespace -f springBootMongo.yml"
+    }
+}
