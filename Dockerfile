@@ -17,7 +17,7 @@ COPY ${JAR_FILE} app.jar
 ##COPY /build/libs/* $PROJECT_HOME/spring-boot-mongo.jar
 
 ##WORKDIR $PROJECT_HOME
-RUN mkdir -p /data
-VOLUME /data
+#RUN mkdir -p /data
+#VOLUME /data
 
 CMD ["java", "-Dspring.data.mongodb.uri=mongodb://mongo:27017/spring-mongo","-Djava.security.egd=file:/dev/./urandom","-jar","./app.jar"]
