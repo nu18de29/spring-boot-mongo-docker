@@ -11,7 +11,7 @@ FROM openjdk:8-jdk-alpine
 RUN mkdir -p /opt/app
 ENV PROJECT_HOME /opt/app
 
-COPY build/libs/spring-boot-mongo-1.0.jar $PROJECT_HOME/spring-boot-mongo.jar
+COPY ./build/libs/* $PROJECT_HOME/spring-boot-mongo.jar
 
 WORKDIR $PROJECT_HOME
 
