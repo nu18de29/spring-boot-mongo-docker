@@ -7,7 +7,7 @@ RUN mkdir -p /opt/app
 ENV PROJECT_HOME /opt/app
 
 #RUN cp build/libs/spring-boot-mongo-1.0.jar $PROJECT_HOME/spring-boot-mongo.jar
-COPY spring-boot-mongo-1.0.jar $PROJECT_HOME/spring-boot-mongo.jar
+COPY *.jar $PROJECT_HOME/spring-boot-mongo.jar
 
 WORKDIR $PROJECT_HOME
 
