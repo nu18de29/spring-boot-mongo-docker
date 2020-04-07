@@ -1,12 +1,12 @@
 FROM openjdk:8-alpine
 
 # Required for starting application up.
-RUN apk update && apk add /bin/sh
+#RUN apk update && apk add /bin/sh
 
 RUN mkdir -p /opt/app
 ENV PROJECT_HOME /opt/app
 
-RUN cp /build/libs/*.jar $PROJECT_HOME/spring-boot-mongo.jar
+COPY build/libs/spring-boot-mongo-docker-1.0.jar $PROJECT_HOME/spring-boot-mongo.jar
 
 WORKDIR $PROJECT_HOME
 
